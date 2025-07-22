@@ -13,27 +13,55 @@ const productsRef = collection(db, 'products');
 
 export default class Product {
   static async getAll() {
-    const snapshot = await getDocs(productsRef);
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    try {
+      const snapshot = await getDocs(productsRef);
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (error) {
+      throw new Error(`Error al obtener productos: ${error.message}`);
+    }
   }
 
   static async create(productData) {
-    const docRef = await addDoc(productsRef, productData);
-    return { id: docRef.id, ...productData };
+    try {
+      // Validación básica (puedes usar librerías como Joi o Zod)
+      if (!productData.name || !productData.price) {
+        throw new Error("Nombre y precio son campos requeridos.");
+      }
+
+      const docRef = await addDoc(productsRef, productData);
+      return { id: docRef.id, ...productData };
+    } catch (error) {
+      throw new Error(`Error al crear producto: ${error.message}`);
+    }
   }
 
   static async getById(id) {
-    const docRef = doc(db, 'products', id);
-    const docSnap = await getDoc(docRef);
-    return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } : null;
+    try {
+      const docRef = doc(db, 'products', id);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) {
+        throw new Error("Producto no encontrado");
+      }
+      return { id: docSnap.id, ...docSnap.data() };
+    } catch (error) {
+      throw new Error(`Error al obtener producto: ${error.message}`);
+    }
   }
 
   static async update(id, updateData) {
-    const docRef = doc(db, 'products', id);
-    await updateDoc(docRef, updateData);
+    try {
+      const docRef = doc(db, 'products', id);
+      await updateDoc(docRef, updateData);
+    } catch (error) {
+      throw new Error(`Error al actualizar producto: ${error.message}`);
+    }
   }
 
   static async delete(id) {
-    await deleteDoc(doc(db, 'products', id));
+    try {
+      await deleteDoc(doc(db, 'products', id));
+    } catch (error) {
+      throw new Error(`Error al eliminar producto: ${error.message}`);
+    }
   }
 }
