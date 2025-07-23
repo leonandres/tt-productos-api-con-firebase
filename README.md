@@ -1,24 +1,24 @@
-<h2>🛍️ API de Gestión de Productos con Firebase</h2>
-API REST para administrar productos de una tienda online, con autenticación JWT y base de datos en Firestore.
+# 🛍️ API de Gestión de Productos con Firebase
 
-<h3>📋 Requisitos previos</h3>
-Node.js v18 o superior
+API REST para administración de catálogo de productos con autenticación JWT y Firestore.
 
-npm o yarn instalado
+## 📋 Requisitos
 
-Proyecto Firebase con Firestore configurado
+- Node.js v18+
+- npm o yarn
+- Proyecto Firebase configurado
+- Credenciales de Firebase (disponibles en la consola)
 
-Credenciales de Firebase (disponibles en la consola de Firebase)
+## 🚀 Instalación
 
-<h3>🛠️ Configuración inicial</h3>
-Clonar el repositorio:
-
-git clone https://github.com/leonandres/tt-productos-api-con-firebase.git<br>
-cd tt-productos-api-con-firebase
+1. Clonar repositorio:
+   ```bash
+   git clone https://github.com/leonandres/tt-productos-api-con-firebase.git
+   cd tt-productos-api-con-firebase
 Instalar dependencias:
 
-npm install
-Configurar variables de entorno:
+npm install <br>
+Configurar variables de entorno: <br>
 Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 
 env<br>
@@ -33,12 +33,12 @@ JWT_SECRET=tu_clave_secreta_jwt <br>
 <h3>🚀 Ejecución del servidor</h3>
 Para iniciar el servidor en modo desarrollo:
 
-npm start
-El servidor estará disponible en:
+npm start <br>
+El servidor estará disponible en: <br>
 http://localhost:3000
 
 🔐 Sistema de autenticación
-Login
+Login <br>
 Para obtener un token JWT válido:
 
 POST /auth/login
@@ -50,7 +50,7 @@ Content-Type: application/json
 }
 Respuesta exitosa:
 
-json
+json <br>
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
@@ -94,44 +94,44 @@ DELETE /api/products/:id
 🏗️ Estructura del proyecto
 
 tt-productos-api-con-firebase/
-├── src/
-│   ├── config/
-│   │   └── firebase.config.js
-│   ├── controllers/
-│   │   ├── products.controller.js
-│   │   └── auth.controller.js
-│   ├── middlewares/
-│   │   └── auth.middleware.js
-│   ├── models/
-│   │   └── Product.js
-│   ├── routes/
-│   │   ├── products.routes.js
-│   │   └── auth.routes.js
-│   ├── services/
-│   │   └── products.service.js
-│   └── index.js
-├── .env.example
-├── .gitignore
-└── package.json
+├── src/ <br>
+│   ├── config/ <br>
+│   │   └── firebase.config.js     <br>
+│   ├── controllers/                <br>
+│   │   ├── products.controller.js  <br>
+│   │   └── auth.controller.js    <br>
+│   ├── middlewares/              <br>
+│   │   └── auth.middleware.js    <br>
+│   ├── models/                   <br>
+│   │   └── Product.js<br>
+│   ├── routes/<br>
+│   │   ├── products.routes.js<br>
+│   │   └── auth.routes.js<br>
+│   ├── services/<br>
+│   │   └── products.service.js<br>
+│   └── index.js<br>
+├── .env.example<br>
+├── .gitignore<br>
+└── package.json<br>
 📦 Dependencias principales
 Paquete	Versión	Descripción
-express	^4.18.2	Framework web para Node.js
-firebase	^9.23.0	SDK oficial de Firebase
-jsonwebtoken	^9.0.2	Implementación de JWT
-cors	^2.8.5	Middleware para CORS
-dotenv	^16.3.1	Manejo de variables de entorno
+express	^4.18.2	Framework web para Node.js<br>
+firebase	^9.23.0	SDK oficial de Firebase<br>
+jsonwebtoken	^9.0.2	Implementación de JWT<br>
+cors	^2.8.5	Middleware para CORS<br>
+dotenv	^16.3.1	Manejo de variables de entorno<br>
 ⚠️ Solución de problemas
-Error 401 - No autorizado
+Error 401 - No autorizado<br>
 Verifica que el token JWT sea válido y esté incluido en el header Authorization
 
 Validar que el token no haya expirado (por defecto expira en 1 hora)
 
-Error 404 - Producto no encontrado
+Error 404 - Producto no encontrado<br>
 Revisa que el ID del producto exista en la colección "productos" de Firestore
 
 Verifica que estés usando el ID correcto
 
-Error 500 - Error del servidor
+Error 500 - Error del servidor<br>
 Revisa la conexión con Firebase
 
 Verifica que todas las variables de entorno estén configuradas correctamente
