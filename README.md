@@ -1,4 +1,4 @@
-🛍️ API de Gestión de Productos con Firebase
+<h2🛍️ API de Gestión de Productos con Firebase</h2>
 API REST para administrar productos de una tienda online, con autenticación JWT y base de datos en Firestore.
 
 📋 Requisitos previos
@@ -13,7 +13,7 @@ Credenciales de Firebase (disponibles en la consola de Firebase)
 🛠️ Configuración inicial
 Clonar el repositorio:
 
-git clone https://github.com/leonandres/tt-productos-api-con-firebase.git
+git clone https://github.com/leonandres/tt-productos-api-con-firebase.git<br>
 cd tt-productos-api-con-firebase
 Instalar dependencias:
 
