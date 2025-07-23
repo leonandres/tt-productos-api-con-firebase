@@ -1,7 +1,7 @@
 🛍️ API de Gestión de Productos con Firebase
 API REST para administrar productos de una tienda online, con autenticación JWT y base de datos en Firestore.
 
-📋 Requisitos
+📋 <h3>Requisitos</h3>
 Node.js v18+
 
 npm o yarn
@@ -33,6 +33,7 @@ FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com
 FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
 FIREBASE_APP_ID=tu_app_id
 JWT_SECRET=tu_secreto_jwt
+
 ▶️ Ejecución
 bash
 npm start
