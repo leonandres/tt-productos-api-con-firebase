@@ -21,16 +21,16 @@ npm install
 Configurar variables de entorno:
 Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 
-env
-PORT=3000
-FIREBASE_API_KEY=tu_api_key_de_firebase
-FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com
-FIREBASE_PROJECT_ID=tu_project_id
-FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
-FIREBASE_APP_ID=tu_app_id
-JWT_SECRET=tu_clave_secreta_jwt
-🚀 Ejecución del servidor
+env<br>
+PORT=3000<br>
+FIREBASE_API_KEY=tu_api_key_de_firebase<br>
+FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com<br>
+FIREBASE_PROJECT_ID=tu_project_id<br>
+FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com <br>
+FIREBASE_MESSAGING_SENDER_ID=tu_sender_id <br>
+FIREBASE_APP_ID=tu_app_id <br>
+JWT_SECRET=tu_clave_secreta_jwt <br>
+<h3>🚀 Ejecución del servidor</h3>
 Para iniciar el servidor en modo desarrollo:
 
 npm start
