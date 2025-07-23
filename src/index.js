@@ -5,11 +5,12 @@ import productRoutes from './routes/products.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); 
+app.use(express.json());
 
 app.use('/api/products', productRoutes);
+app.use('/auth', authRoutes);
 
-// Ruta de prueba (opcional)
+// Ruta de prueba
 app.get('/', (req, res) => {
   res.json({ 
     status: 'success',
@@ -19,6 +20,10 @@ app.get('/', (req, res) => {
       docs: 'Agregar aquí la URL de documentación'
     }
   });
+});
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({ error: err.message });
 });
 
 app.listen(PORT, () => {
