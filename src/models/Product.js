@@ -9,7 +9,7 @@ import {
   deleteDoc 
 } from 'firebase/firestore';
 
-const productsRef = collection(db, 'products');
+const productsRef = collection(db, 'productos');
 
 export default class Product {
   static async getAll() {
@@ -24,7 +24,7 @@ export default class Product {
   static async create(productData) {
     try {
       // Validación básica (puedes usar librerías como Joi o Zod)
-      if (!productData.name || !productData.price) {
+      if (!productData.nombre || !productData.precio) {
         throw new Error("Nombre y precio son campos requeridos.");
       }
 
@@ -37,7 +37,7 @@ export default class Product {
 
   static async getById(id) {
     try {
-      const docRef = doc(db, 'products', id);
+      const docRef = doc(db, 'productos', id);
       const docSnap = await getDoc(docRef);
       if (!docSnap.exists()) {
         throw new Error("Producto no encontrado");
@@ -50,7 +50,7 @@ export default class Product {
 
   static async update(id, updateData) {
     try {
-      const docRef = doc(db, 'products', id);
+      const docRef = doc(db, 'productos', id);
       await updateDoc(docRef, updateData);
     } catch (error) {
       throw new Error(`Error al actualizar producto: ${error.message}`);
@@ -59,7 +59,7 @@ export default class Product {
 
   static async delete(id) {
     try {
-      await deleteDoc(doc(db, 'products', id));
+      await deleteDoc(doc(db, 'productos', id));
     } catch (error) {
       throw new Error(`Error al eliminar producto: ${error.message}`);
     }

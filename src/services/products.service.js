@@ -39,7 +39,9 @@ export default class ProductService {
 
   static async updateProduct(id, updateData) {
     try {
-      if (updateData.price && updateData.price <= 0) {
+      const product = await Product.getById(id);
+      if (!product) throw { status: 404, message: "Producto no encontrado" };
+      if (updateData.precio && updateData.precio <= 0) {
         throw { status: 400, message: "El precio debe ser mayor a 0" };
       }
       await Product.update(id, updateData);
