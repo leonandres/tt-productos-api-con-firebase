@@ -7,6 +7,9 @@ API REST para administración de catálogo de productos con autenticación JWT y
 - Node.js v18+
 - npm o yarn
 - Proyecto Firebase configurado
+- Cuenta de Firebase con:
+  - Proyecto Firestore configurado
+  - Colección "productos" creada
 - Credenciales de Firebase (disponibles en la consola)
 
 ## 🚀 Instalación
@@ -21,31 +24,34 @@ API REST para administración de catálogo de productos con autenticación JWT y
 3. Configurar variables de entorno:
 Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 
-env<br>
-PORT=3000<br>
-FIREBASE_API_KEY=tu_api_key_de_firebase<br>
-FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com<br>
-FIREBASE_PROJECT_ID=tu_project_id<br>
-FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com <br>
-FIREBASE_MESSAGING_SENDER_ID=tu_sender_id <br>
-FIREBASE_APP_ID=tu_app_id <br>
-JWT_SECRET=tu_clave_secreta_jwt <br>
+   ```env
+   PORT=3000
+   FIREBASE_API_KEY=tu_api_key_de_firebase
+   FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com
+   FIREBASE_PROJECT_ID=tu_project_id
+   FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com 
+   FIREBASE_MESSAGING_SENDER_ID=tu_sender_id 
+   FIREBASE_APP_ID=tu_app_id 
+   JWT_SECRET=tu_clave_secreta_jwt 
 ## 🚀 Ejecución del servidor
 Para iniciar el servidor en modo desarrollo:
-   
-   npm start <br>
-El servidor estará disponible en: <br>
+      ```bash
+      npm start
+
+El servidor estará disponible en:  
 http://localhost:3000
 
 ## 🔐 Sistema de autenticación
-Login <br>
+
+### Login
 Para obtener un token JWT válido:
 
-POST /auth/login
+      ```bash
+      POST /auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@tienda.com",
+  "email": "admin@example.com",
   "password": "1234"
 }
 Respuesta exitosa:
