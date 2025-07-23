@@ -1,6 +1,7 @@
 import 'dotenv/config'; 
 import express from 'express';
-import productRoutes from './routes/products.js';
+import productRoutes from './routes/products.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
     }
   });
 });
+
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ error: err.message });

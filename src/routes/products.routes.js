@@ -1,11 +1,11 @@
 import express from 'express';
-import ProductController from '../controllers/product.controller.js';
-import { authMiddleware } from '../middlewares/auth.middleware.js'; // Lo implementaremos después
+import ProductsController from '../controllers/products.controller.js';
+import { authMiddleware } from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
-router.get('/', ProductController.getAllProducts);
-router.get('/:id', ProductController.getProductById);
+router.get('/', ProductsController.getAllProducts);
+router.get('/:id', ProductsController.getProductById);
 
 // Rutas protegidas (requieren autenticación JWT)
 router.post('/create', authMiddleware, ProductsController.createProduct);
