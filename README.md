@@ -37,7 +37,6 @@ Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 Para iniciar el servidor en modo desarrollo:
     ```bash
     npm start
-
 El servidor estará disponible en:  
 http://localhost:3000
 
