@@ -35,8 +35,8 @@ Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
    JWT_SECRET=tu_clave_secreta_jwt 
 ## 🚀 Ejecución del servidor
 Para iniciar el servidor en modo desarrollo:
-      ```bash
-      npm start
+    ```bash
+    npm start
 
 El servidor estará disponible en:  
 http://localhost:3000
@@ -46,8 +46,8 @@ http://localhost:3000
 ### Login
 Para obtener un token JWT válido:
 
-      ```bash
-      POST /auth/login
+    ```bash
+    POST /auth/login
 Content-Type: application/json
 
 {
