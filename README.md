@@ -30,14 +30,14 @@ FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com <br>
 FIREBASE_MESSAGING_SENDER_ID=tu_sender_id <br>
 FIREBASE_APP_ID=tu_app_id <br>
 JWT_SECRET=tu_clave_secreta_jwt <br>
-<h3>🚀 Ejecución del servidor</h3>
+## 🚀 Ejecución del servidor
 Para iniciar el servidor en modo desarrollo:
 
 npm start <br>
 El servidor estará disponible en: <br>
 http://localhost:3000
 
-🔐 Sistema de autenticación
+## 🔐 Sistema de autenticación
 Login <br>
 Para obtener un token JWT válido:
 
@@ -57,7 +57,7 @@ json <br>
 Uso del token
 Incluir el token en los headers de las peticiones protegidas:
 
-Authorization: Bearer <token_jwt>
+## Authorization: Bearer <token_jwt>
 📚 Endpoints disponibles
 🔹 Productos
 Listar todos los productos
@@ -91,7 +91,7 @@ Content-Type: application/json
 Eliminar producto (Requiere autenticación)
 
 DELETE /api/products/:id
-🏗️ Estructura del proyecto
+## 🏗️ Estructura del proyecto
 
 tt-productos-api-con-firebase/
 ├── src/ <br>
@@ -113,14 +113,14 @@ tt-productos-api-con-firebase/
 ├── .env.example<br>
 ├── .gitignore<br>
 └── package.json<br>
-📦 Dependencias principales
+## 📦 Dependencias principales
 Paquete	Versión	Descripción
 express	^4.18.2	Framework web para Node.js<br>
 firebase	^9.23.0	SDK oficial de Firebase<br>
 jsonwebtoken	^9.0.2	Implementación de JWT<br>
 cors	^2.8.5	Middleware para CORS<br>
 dotenv	^16.3.1	Manejo de variables de entorno<br>
-⚠️ Solución de problemas
+## ⚠️ Solución de problemas
 Error 401 - No autorizado<br>
 Verifica que el token JWT sea válido y esté incluido en el header Authorization
 
@@ -138,6 +138,6 @@ Verifica que todas las variables de entorno estén configuradas correctamente
 
 Consulta los logs del servidor para más detalles
 
-📄 Licencia
+## 📄 Licencia
 Este proyecto está bajo la licencia MIT.
 
