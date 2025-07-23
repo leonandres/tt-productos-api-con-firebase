@@ -15,10 +15,10 @@ API REST para administración de catálogo de productos con autenticación JWT y
    ```bash
    git clone https://github.com/leonandres/tt-productos-api-con-firebase.git
    cd tt-productos-api-con-firebase
-Instalar dependencias:
-
-npm install <br>
-Configurar variables de entorno: <br>
+2. Instalar dependencias:
+   ```bash
+   npm install
+3. Configurar variables de entorno:
 Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 
 env<br>
@@ -32,8 +32,8 @@ FIREBASE_APP_ID=tu_app_id <br>
 JWT_SECRET=tu_clave_secreta_jwt <br>
 ## 🚀 Ejecución del servidor
 Para iniciar el servidor en modo desarrollo:
-
-npm start <br>
+   
+   npm start <br>
 El servidor estará disponible en: <br>
 http://localhost:3000
 
