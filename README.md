@@ -34,11 +34,11 @@ Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
    FIREBASE_APP_ID=tu_app_id 
    JWT_SECRET=tu_clave_secreta_jwt 
 ## 🚀 Ejecución del servidor
+
 Para iniciar el servidor en modo desarrollo:
-    ```bash
-    npm start
-El servidor estará disponible en:  
-http://localhost:3000
+
+               ```bash
+                npm install  
 
 ## 🔐 Sistema de autenticación
 
