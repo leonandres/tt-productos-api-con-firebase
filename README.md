@@ -1,130 +1,143 @@
 🛍️ API de Gestión de Productos con Firebase
 API REST para administrar productos de una tienda online, con autenticación JWT y base de datos en Firestore.
 
-<h3>📋 Requisitos</h3>
-Node.js v18+
+📋 Requisitos previos
+Node.js v18 o superior
 
-npm o yarn
+npm o yarn instalado
 
-Cuenta de Firebase con proyecto Firestore configurado
+Proyecto Firebase con Firestore configurado
 
-<h3>🚀 Instalación</h3>
+Credenciales de Firebase (disponibles en la consola de Firebase)
+
+🛠️ Configuración inicial
 Clonar el repositorio:
 
 git clone https://github.com/leonandres/tt-productos-api-con-firebase.git
-
-cd tt-2025-api-productos
-
+cd tt-productos-api-con-firebase
 Instalar dependencias:
 
-bash
 npm install
 Configurar variables de entorno:
-
-Crear archivo .env en la raíz con:
+Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
 
 env
 PORT=3000
-FIREBASE_API_KEY=tu_api_key
+FIREBASE_API_KEY=tu_api_key_de_firebase
 FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com
 FIREBASE_PROJECT_ID=tu_project_id
 FIREBASE_STORAGE_BUCKET=tu_bucket.appspot.com
 FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
 FIREBASE_APP_ID=tu_app_id
-JWT_SECRET=tu_secreto_jwt
+JWT_SECRET=tu_clave_secreta_jwt
+🚀 Ejecución del servidor
+Para iniciar el servidor en modo desarrollo:
 
-▶️ Ejecución
-bash
 npm start
-El servidor estará disponible en: http://localhost:3000
+El servidor estará disponible en:
+http://localhost:3000
 
-🔐 Autenticación
-Obtener token JWT:
+🔐 Sistema de autenticación
+Login
+Para obtener un token JWT válido:
 
-bash
 POST /auth/login
-Body: { "email": "admin@example.com", "password": "1234" }
-Usar el token en headers:
+Content-Type: application/json
 
-text
+{
+  "email": "admin@tienda.com",
+  "password": "1234"
+}
+Respuesta exitosa:
+
+json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+Uso del token
+Incluir el token en los headers de las peticiones protegidas:
+
 Authorization: Bearer <token_jwt>
-📊 Endpoints
-Productos
-Obtener todos los productos
+📚 Endpoints disponibles
+🔹 Productos
+Listar todos los productos
+GET /api/products
+<img width="1366" height="703" alt="image" src="https://github.com/user-attachments/assets/4897723b-122c-4c16-999c-1752269ba80e" />
 
-bash
-GET [/api/products](http://localhost:3000/api/products)
-Obtener un producto
-<img width="1368" height="702" alt="image" src="https://github.com/user-attachments/assets/41b3ac1d-880d-4769-9a09-96d172ee4e12" />
-
+Obtener un producto específico
 
 GET /api/products/:id
-Crear producto (Requiere autenticación)
-
+Crear nuevo producto (Requiere autenticación)
+bash
 POST /api/products/create
-Body: {
+Content-Type: application/json
+
+{
   "nombre": "Smartphone X Pro",
-  "precio": 1000,
+  "precio": 999.99,
   "categoria": "electrónica",
-  "descripcion": "Pantalla 6.7\", 512GB",
+  "descripcion": "Pantalla AMOLED 6.7\"",
   "stock": 50
 }
 Actualizar producto (Requiere autenticación)
-
 bash
 PUT /api/products/:id
-Body: {
-  "precio": 950,
+Content-Type: application/json
+
+{
+  "precio": 899.99,
   "stock": 45
 }
 Eliminar producto (Requiere autenticación)
 
-bash
 DELETE /api/products/:id
-🏗️ Estructura del Proyecto
-text
-src/
-├── config/
-│   └── firebase.config.js
-├── controllers/
-│   ├── products.controller.js
-│   └── auth.controller.js
-├── middlewares/
-│   └── auth.middleware.js
-├── models/
-│   └── Product.js
-├── routes/
-│   ├── products.routes.js
-│   └── auth.routes.js
-├── services/
-│   └── products.service.js
-└── index.js
-🛠️ Dependencias
-express: Framework web
+🏗️ Estructura del proyecto
 
-firebase: Conexión con Firestore
+tt-productos-api-con-firebase/
+├── src/
+│   ├── config/
+│   │   └── firebase.config.js
+│   ├── controllers/
+│   │   ├── products.controller.js
+│   │   └── auth.controller.js
+│   ├── middlewares/
+│   │   └── auth.middleware.js
+│   ├── models/
+│   │   └── Product.js
+│   ├── routes/
+│   │   ├── products.routes.js
+│   │   └── auth.routes.js
+│   ├── services/
+│   │   └── products.service.js
+│   └── index.js
+├── .env.example
+├── .gitignore
+└── package.json
+📦 Dependencias principales
+Paquete	Versión	Descripción
+express	^4.18.2	Framework web para Node.js
+firebase	^9.23.0	SDK oficial de Firebase
+jsonwebtoken	^9.0.2	Implementación de JWT
+cors	^2.8.5	Middleware para CORS
+dotenv	^16.3.1	Manejo de variables de entorno
+⚠️ Solución de problemas
+Error 401 - No autorizado
+Verifica que el token JWT sea válido y esté incluido en el header Authorization
 
-jsonwebtoken: Autenticación JWT
+Validar que el token no haya expirado (por defecto expira en 1 hora)
 
-cors: Manejo de CORS
+Error 404 - Producto no encontrado
+Revisa que el ID del producto exista en la colección "productos" de Firestore
 
-dotenv: Variables de entorno
+Verifica que estés usando el ID correcto
 
-📝 Notas
-Los productos se almacenan en Firestore en la colección "productos"
+Error 500 - Error del servidor
+Revisa la conexión con Firebase
 
-Credenciales de prueba para autenticación:
+Verifica que todas las variables de entorno estén configuradas correctamente
 
-Email: admin@tienda.com
-
-Password: 1234
-
-🔧 Problemas Comunes
-Error 401: Verifica que el token JWT sea válido y esté en el header Authorization
-
-Error 404: Revisa que el ID del producto exista en Firestore
-
-Error 500: Verifica la conexión con Firebase y las variables de entorno
+Consulta los logs del servidor para más detalles
 
 📄 Licencia
-MIT
+Este proyecto está bajo la licencia MIT.
+
